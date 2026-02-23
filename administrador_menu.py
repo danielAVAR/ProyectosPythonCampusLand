@@ -410,7 +410,7 @@ def eliminar_por_titulo(archivo, archivo1, archivo2):
                 with open(archivo_actual, "w") as f:
                     json.dump(datos, f, indent=4)
                 print(f"Elemento eliminado de {archivo_actual}")
-                return # Salimos al terminar
+                return 
                 
     print("No se encontró ningún elemento con ese título.")
 
@@ -431,7 +431,7 @@ def eliminar_por_titulo(archivo, archivo1, archivo2):
                 with open(archivo_actual, "w") as f:
                     json.dump(datos, f, indent=4)
                 print(f"Elemento eliminado de {archivo_actual}")
-                return # Salimos al terminar
+                return 
                 
     print("No se encontró ningún elemento con ese título.")
 
@@ -452,7 +452,7 @@ def eliminar_por_titulo(archivo, archivo1, archivo2):
                 with open(archivo_actual, "w") as f:
                     json.dump(datos, f, indent=4)
                 print(f"Elemento eliminado de {archivo_actual}")
-                return # Salimos al terminar
+                return 
                 
     print("No se encontró ningún elemento con ese título.")
 
@@ -467,7 +467,6 @@ def eliminar_por_otro(archivo, archivo1, archivo2):
             with open(archivo_actual, "r") as f:
                 datos = json.load(f)
             
-            # Filtramos: Solo se quedan los que NO coinciden con la búsqueda en Creador o Genero
             nueva_lista = []
             for item in datos:
                 # Verificamos que sea un diccionario y que tenga los campos
@@ -493,8 +492,7 @@ def eliminar_por_otro(archivo, archivo1, archivo2):
 
 #EJECUCION (6) GUARDAR CARGAR
 def guardar_cargar_confirmacion(archivo, archivo1, archivo2):
-    # En Python, al usar json.dump, ya estamos guardando.
-    # Esta función servirá para verificar el estado de los archivos.
+   
     archivos = [archivo, archivo1, archivo2]
     for a in archivos:
         if os.path.exists(a):
