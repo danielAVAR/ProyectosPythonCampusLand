@@ -4,6 +4,7 @@ import os
 archivo = "usuarios.json"
 archivo1= "peliculas.json"
 archivo2= "musica.json"
+archivo3= "promedio.json"
 
 def menu_principal():
     print("""
@@ -17,6 +18,7 @@ def menu_principal():
 4. Editar un Elemento
 5. Eliminar un Elemento
 6. Guardar y Cargar Coleccion
+7. Promedio notas
 7. Salir
 ======================================
 Selecciona una opcion (1-7)""")
@@ -98,7 +100,18 @@ def menu_guadar_cargar():
 ===========================================
 Selecciona una opción (1-3):""")
 
-
+def menu_promedio_notas():
+    print("""
+===========================================
+            PROMEDIO DE NOTAS
+===========================================
+¿Qué deseas hacer?
+1. Promedio Libros
+2. Promedio Peliculas
+3. Promedio Musica
+4. Salir
+===========================================
+Selecciona una opción (1-3):""")
 
 #EJECUCION(1) AGREGAR
 
@@ -502,6 +515,59 @@ def guardar_cargar_confirmacion(archivo, archivo1, archivo2):
         else:
             print(f"Archivo {a} no existe todavía (se creará al añadir algo).")
 
+    
+#EJECUCION (7) PROMEDIO DE NOTAS
+def promedio_libros(archivo):
+    archivos = [archivo]
+    #LEER ARCHIVO JSON Y TRANSFERIRLO A PYTHON
+    for archivos_actuales in archivos:
+        with open(archivos_actuales, "r") as f:
+            datos = json.load(f)
+    #IDENTIFICAR SOLO CATEGORIA PUNTUACION
+    for item in datos:
+                if item["Puntuacion"]:
+                    print("")
+
+                    
+    #HACER LA OPERACION DEL PROMEDIO 
+    #IMPRIMIR RESPUESTA A ARCHIVO JSON PROMEDIO
+    datos.append()
+
+    with open(archivo, "w") as f:
+        json.dump(datos, f, indent=4)
+
+        print("Libro Guardado Correctamente")
+    
+    
+
+def promedio_peliculas(archivo1):
+    archivos = [archivo1]
+    #LEER ARCHIVO JSON Y TRANSFERIRLO A PYTHON
+    for archivos_actuales in archivos:
+        with open(archivos_actuales, "r") as f:
+            datos = json.load(f)
+    #IDENTIFICAR SOLO CATEGORIA PUNTUACION
+    for item in datos:
+                if item["Puntuacion"]:
+                    print("")
+    #HACER LA OPERACION DEL PROMEDIO 
+    #IMPRIMIR RESPUESTA A ARCHIVO JSON PROMEDIO
+
+
+
+def promedio_musica(archivo2):
+    archivos = [archivo2]
+    #LEER ARCHIVO JSON Y TRANSFERIRLO A PYTHON
+    for archivos_actuales in archivos:
+        with open(archivos_actuales, "r") as f:
+            datos = json.load(f)
+    #IDENTIFICAR SOLO CATEGORIA PUNTUACION
+    for item in datos:
+                if item["Puntuacion"]:
+                    print("1") 
+    #HACER LA OPERACION DEL PROMEDIO 
+    #IMPRIMIR RESPUESTA A ARCHIVO JSON PROMEDIO
+
 
 #EJECUCIONES
 def ejecucion_1():
@@ -600,7 +666,21 @@ def ejecucion_6():
         else:
             print("OPCION INVALIDA")
 
-
+def ejecucion_7():
+    while True:
+        menu_promedio_notas()
+        opcion = pedir_opcion()
+        if opcion == 1:
+            promedio_libros(archivo)
+        elif opcion == 2:
+            promedio_peliculas(archivo1)
+        elif opcion == 3: 
+            promedio_musica(archivo2)
+        elif opcion == 4:
+            print("Regresando al Menu")
+            break
+        else:
+            print("OPCION INVALIDA")
 
 
 def pedir_opcion():
@@ -624,7 +704,9 @@ while True:
     elif opcion == 6:
         ejecucion_6()
     elif opcion == 7:
-        print("AHH")
+        ejecucion_7()
+    elif opcion == 8:
+        print("bye bye")
         break
     else:
         print("OPCION INVALIDA")
